@@ -1,0 +1,17 @@
+function check()
+	for i,v in pairs(workspace:GetDescendants()) do
+		if v.Name:lower() == "kill" then
+			v.Touched:Connect(function(hit)
+				local hum = hit.Parent:WaitForChild("Humanoid")
+				if hum ~= nil then
+					hum.Parent:BreakJoints()
+					hum.Health = 0
+				end
+			end)
+		end
+	end
+end
+
+while wait() do
+	check()
+end
