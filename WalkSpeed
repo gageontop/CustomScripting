@@ -1,18 +1,10 @@
-function check()
-	for i,v in pairs(workspace:GetDescendants()) do
-		if v.Name:lower() == "speed" then
-			v.Touched:Connect(function(hit)
-				local hum = hit.Parent:WaitForChild("Humanoid")
-				if hum ~= nil then
-					if script:FindFirstChild("Speed") ~= nil then
-						hum.WalkSpeed = script:FindFirstChild("Speed").Value
-					end
-				end
-			end)
+script.Parent.Touched:Connect(function(hit)
+	local hum = hit.Parent:WaitForChild("Humanoid")
+	if hum ~= nil and hum:GetState() ~= Enum.HumanoidStateType.Dead then
+		if script.Speed ~= nil then
+			hum.WalkSpeed = script.Speed.Value
+		else
+			hum.WalkSpeed = 16
 		end
 	end
-end
-
-while wait() do
-	check()
-end
+end)
