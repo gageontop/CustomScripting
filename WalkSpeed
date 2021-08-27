@@ -1,8 +1,8 @@
 script.Parent.Touched:Connect(function(hit)
 	local hum = hit.Parent:WaitForChild("Humanoid")
 	if hum ~= nil and hum:GetState() ~= Enum.HumanoidStateType.Dead then
-		if script.Speed ~= nil then
-			hum.WalkSpeed = script.Speed.Value
+		if script.Parent:FindFirstChild("Speed") ~= nil then
+			hum.WalkSpeed = script.Parent:FindFirstChild("Speed").Value
 		else
 			hum.WalkSpeed = 16
 		end
